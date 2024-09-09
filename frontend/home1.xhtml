@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <style>
+            .image {
+                background-image: url("Images/ship5.jpg");
+                height: 100%;
+                width: 100%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+            }
+            body {
+                padding: 0;
+                margin: 0;
+            }
+            nav {
+                font-family: Poppins, 'Open Sans', sans-serif !important;
+                background-color: #080732;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+                position: fixed;
+                width: 100%;
+                top: 0%;
+            }
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                margin: 0 10px;
+            }
+            footer {
+                float: left;
+                font-size: 15px;
+                line-height: 13px;
+                color: rgba(255, 255, 255, 0.6);
+                width: 100%;
+                padding: 1px 0 2px;
+                background-color: #474a53;
+                font-family: Open Sans, Arial;
+                font-weight: 400;
+                font-style: normal;
+                position: fixed;
+                width: 100%;
+                bottom: 0;
+            }
+            .content {
+                width: 96%;
+                margin: 0 auto;
+                background: rgba(255, 255, 255, 0.8);
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            .section-header {
+                font-size: 24px;
+                color: #080732;
+                border-bottom: 2px solid #080732;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+            .feature-list li {
+                margin-bottom: 10px;
+                font-size: 18px;
+            }
+            .port-container {
+                position: relative;
+                display: inline-table;
+                margin: 10px;
+            }
+            .port-image {
+                width: 250px;
+                height: 150px;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: opacity 0.3s;
+            }
+            .port-info {
+                display: none;
+                position: absolute;
+                bottom: 105%;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0, 0, 0, 0.8);
+                color: #fff;
+                padding: 10px;
+                border-radius: 8px;
+                width: 250px;
+                text-align: center;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+            }
+            .port-container:hover .port-info {
+                display: block;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <p:growl id="growl" sticky="false" life="3000" showDetail="false"/>
+            <nav>
+                <b> <a href="home1.xhtml">Home</a></b>
+                <b> <a href="shipPage.xhtml">Ship</a></b>
+                <b> <a href="ShipDetails.xhtml">ShipDetails</a></b>
+                <b> <a href="portPage.xhtml">Ports</a></b>
+                <b> <a href="contact.xhtml">Contact Us</a></b>
+                <b> <a href="loginPage.xhtml">Logout</a></b>
+            </nav>
+        <h:form>
+            <div class="image">
+                <div class="content">
+                    <h1>Welcome to the Ship Location and Tracking System!</h1>
+                    <p>Our Ship Location and Tracking System is designed to revolutionize the way maritime operations are managed. 
+                       With cutting-edge technology, we provide real-time tracking, insightful analytics, and seamless integration 
+                       to enhance operational efficiency and safety.</p>
+
+                    <div class="section-header">Key Features</div>
+                    <ul class="feature-list">
+                        <li><strong>Ship Status:</strong> Real-time updates on the current status of your ships.</li>
+                        <li><strong>Departure Details:</strong> Track the departure date and port for each vessel.</li>
+                        <li><strong>Arrival Details:</strong> Monitor the estimated arrival date and port.</li>
+                        <li><strong>Port Details:</strong> Comprehensive information about each port.</li>
+                    </ul>
+
+                    <div class="section-header">Major Ports</div>
+                    <div class="port-container">
+                        <img src="Images/port1.jpeg" class="port-image" />
+                        <div class="port-info">Port of Shanghai: The Port of Shanghai located in the vicinity of Shanghai, 
+                                               comprises a deep-sea port and a river port. The Port of Shanghai is the largest seaport in the world.
+                                               With a deep sea port and river port, Shanghai port oversees more than 2,000 vessels monthly.</div>
+                    </div>
+                    <div class="port-container">
+                        <img src="Images/port2.jpeg" class="port-image" />
+                        <div class="port-info">Port of Singapore: The Port of Singapore is the collection of facilities and terminals 
+                                               that conduct maritime trade and handle Singapore's harbours and shipping.
+                                               The Port of Singapore is the Second largest seaport in the world.
+                                               Jurong Port is a multi-purpose port and the main general and bulk cargo gateway for Singapore and the region.</div>
+                    </div>
+                    <div class="port-container">
+                        <img src="Images/port3.jpeg" class="port-image" />
+                        <div class="port-info">Port of Ningbo-Zhoushan: The Port of Ningbo-Zhoushan is the busiest port in the world in terms of cargo tonnage.
+                                               The Port of Singapore is the Third largest seaport in the world.
+                                               The Port of Ningbo-Zhoushan complex is a modern multi-purpose deep water port, 
+                                               consisting of inland, estuary, and coastal harbors.</div>
+                    </div>
+                    
+                    <div class="port-container">
+                        <img src="Images/port4.jpg" class="port-image" />
+                        <div class="port-info">Port of Shenzhen: The Port of Shenzhen is the collective name of a number of ports the coastline of 
+                                               Shenzhen, Guangdong Province, China. These ports as a whole form one of the busiest 
+                                               and fastest growing container ports in the world. The Port of Shenzhen is the fourth 
+                                               largest seaport in the world.</div>
+                    </div>
+
+                    <div class="section-header">Why Choose Us?</div>
+                    <p>Our system not only helps in tracking ships but also provides the status of the ship, 
+                       ship details and the port details that helps in improving safety measures. Experience the next level of maritime management with our 
+                       user-friendly platform.</p>
+                </div>
+            </div>
+        </h:form>
+
+        <footer>
+            copyright &copy; 2024 Solverminds.com. All rights reserved.
+        </footer>
+    </h:body>
+</html>
+

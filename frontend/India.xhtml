@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <style>
+            body {
+                background-image: url("Images/new.jpg");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: inherit;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+
+            .navbar {
+                background-color: #080732;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                padding: 4px 0;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                left: 0;
+                z-index: 1000;
+            }
+
+            .navbar .logo {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                padding-left: 20px;
+            }
+
+            .navbar .logo img {
+                height: 40px; 
+            }
+
+            .navbar .links {
+                display: flex;
+                justify-content: flex-end;
+                flex: 2;
+            }
+
+            .navbar .links a {
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 20px;
+                text-decoration: none;
+                font-size: 15px;
+            }
+
+            .navbar .links a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+
+            .container {
+                width: 300px;
+                margin: 100px auto;
+                background-color: rgba(255, 255, 255, 0.8);
+                padding: 30px;
+                border-radius: 5px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            
+            .logo-container {
+            display: flex;
+            justify-content: space-around;  
+            align-items: center;
+            margin: 20px;
+            }
+        
+            .logo-container a {
+            text-decoration: none;
+            }
+         
+            .logo-container img {
+            max-width: 30px; 
+            height: 30px;
+            }
+            
+            .location-container {
+                display: flex;
+                flex-direction: column;
+                padding: 15px;
+                background-color: #080732;
+                border-radius: 8px;
+                max-width: 400px; 
+                margin: inherit;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+            }
+       
+            .location-line {
+                color: #fff;
+                display: flex;
+                align-items: stretch;
+                margin-bottom: 10px;
+                
+            }
+          
+            .location-number{
+                color: #fff;
+                display: flex;
+                align-items: center;
+                marigin-bottom: 10px;
+            }
+
+            .location-icon {
+                width: 30px;
+                height: 30px; 
+                background: url('Images/location.png') no-repeat center center;
+                background-size: cover;
+                margin-right: 10px;
+            }
+            
+               .location-icon1 {
+                width: 30px; 
+                height: 30px; 
+                background: url('Images/phone.png') no-repeat center center;
+                background-size: cover;
+                margin-right: 10px;
+            }
+            
+              .location-icon3 {
+                width: 30px; 
+                height: 30px; 
+                background: url('Images/email.png') no-repeat center center;
+                background-size: cover;
+                margin-right: 10px;
+            }
+
+            .location-address {
+                color: #fff;
+                line-height: 1; 
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="navbar">
+            <div class="logo">
+                <a href="home1.xhtml">
+                <img src="Images/svm.png" alt="Logo"/> 
+                </a>
+            </div>
+            <div class="links">
+                <a href="India.xhtml">Indian Office</a>
+                <a href="USA.xhtml">USA Office</a>
+                <a href="Singapore.xhtml">Singapore Office</a>
+                <a href="German.xhtml">German Office</a>
+                <a href="UK.xhtml">UK Office</a>
+                <a href="UAE.xhtml">UAE Office</a>
+            </div>  
+        </div>
+        <div class="container">
+            <h:form>
+                <h2 align="center">Indian Office</h2>
+                
+                <div class="location-container">
+                    
+                <div class="location-line">
+                  <h:outputText value="SOLVERMINDS Solutions and Technologies Pvt.Ltd." /><br/>
+                  <h:outputText value="Plot 2B-4, 7th Cross Street, SIPCOT IT Park, OMR, Siruseri, Chennai, Tamil Nadu, India - 603 103." />
+                </div>
+                    
+                    <div class="location-number"><br/>
+                        <div class="location-icon1"></div>
+                         <h:outputText value="+91-44-42020233"/>
+                    </div>
+                    
+                    <div class="location-number"><br/>
+                        <div class="location-icon3"></div>
+                        <a href="mailto:enquiry@gmail.com">enquiry@gmail.com</a>
+                    </div><br/>
+                    
+                    <div class="location-line">
+                        <h:outputText value="For Carrers, Pls email:"/>   
+                    </div>
+                    <div class="location-number">
+                        <div class="location-icon3"></div>
+                        <a href="mailto:resume@gmail.com">resume@gmail.com</a>
+                    </div>
+        
+                    
+        <div class="logo-container">
+            <a href="https://www.facebook.com/solverminds/">
+                <h:graphicImage url="/Images/fb.jpeg" />
+            </a>
+            <a href="https://x.com/SOLVERMINDS">
+                <h:graphicImage url="/Images/twitter.jpeg" />
+            </a>
+            <a href="https://in.linkedin.com/company/solverminds-solutions-and-technologies">
+                <h:graphicImage url="/Images/linked.png" />
+            </a>
+        </div>      
+                </div>
+            </h:form>
+        </div>
+    </h:body>
+</html>

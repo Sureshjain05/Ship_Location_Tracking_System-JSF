@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <style>
+            body{
+                padding: 0px;
+                margin: 0px;
+            }
+            form{
+                margin-top: 110px;
+            }
+            nav {
+                font-family: Poppins, 'Open Sans', sans-serif !important;
+                background-color: #080732;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+                position: fixed;
+                width: 100%;
+                top: 10%;
+            }
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                margin: 0 10px;
+            }
+            header{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                color: antiquewhite;
+                position: fixed;
+                width: 100%;
+                height: 8%;
+                top:0;
+                background-color:#080732;
+            }
+            footer {
+                float: left;
+                font-size: 15px;
+                line-height: 13px;
+                color: rgba(255, 255, 255, 0.6);
+                width: 100%;
+                padding: 1px 0 2px;
+                background-color: #474a53;
+                font-family: Open Sans, Arial;
+                font-weight: 400;
+                font-style: normal;
+                position: fixed;
+                width: 100%;
+                bottom: 0;
+            }
+            .col{
+                height: 20px;
+                color: #010101;
+
+            }
+            .ui-datatable th.ui-state-default {
+                width: 90px;
+                font-size: 15px;
+                background-color: #e9f548;
+                color: #000;
+            }
+            .row{
+                height: 10px;
+            }
+            .ui-widget-content{
+                width: 300px;
+                font-size: 14px;
+                text-align: center;
+            }
+               confirmDialog{
+                    display: inline;
+            }
+            
+            .ui-confirmdialog-content {
+                display: flex;
+                justify-content: space-around;
+            }
+
+            .ui-confirmdialog-yes,
+            .ui-confirmdialog-no {
+                  margin: 0 10px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <header>
+            <h:graphicImage url="/Images/svm.png"/>
+            <h2 style="color: #fff">Ship Location and Tracking System</h2>
+            <nav>
+                <b> <a href="home1.xhtml">Home</a></b>
+                <b> <a href="addPort.xhtml">Add Port</a></b>
+                <b> <a href="contact.xhtml">Contact us</a></b>
+                <b> <a href="loginPage.xhtml">Logout</a></b>
+            </nav>
+        </header>
+        <h:form >
+            <p:growl id="growl" sticky="false" life="30000" showDetail="false"/>
+            <p:dataTable value="#{portTableBean.portList}" var="port">
+                    <p:column headerText="Port Id" class="col">
+                        <h:outputText class="row" value="#{port.portId}"/>
+                    </p:column>
+                <p:column headerText="Name" class="col">
+                    <h:outputText class="row" value="#{port.name}"/>
+                </p:column>
+                <p:column headerText="City" class="col">
+                    <h:outputText class="row" value="#{port.city}"/>
+                </p:column>
+                <p:column headerText="Port Function" class="col">
+                    <h:outputText class="row" value="#{port.portFunction}"/>
+                </p:column>
+                <p:column headerText="Port Size" class="col">
+                    <h:outputText class="row" value="#{port.portSize}"/>
+                </p:column>
+                 <p:column headerText="Edit" class="col">
+                     <p:commandButton value="Update" action="#{portTableBean.editPort(port.portId)}"  ajax="false" update="@form" />
+                     
+                 </p:column>
+                <p:column headerText="DELETE" class="col">
+                    <p:commandButton value="Delete record" actionListener="#{portTableBean.delPort(port)}" update="@form"> 
+                    <p:confirm header="Confirmation To Delete" message="Are you sure you want to delete the record?" icon="ui-icon-alert"/> 
+    
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <h:panelGroup styleClass="ui-confirmdialog-content">
+                           <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                           <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </h:panelGroup>
+                    </p:confirmDialog> 
+                </p:commandButton>
+              </p:column>   
+            </p:dataTable>
+        </h:form>
+        <footer>
+            &copy; 2024 My Website. All rights reserved.
+        </footer>
+    </h:body>
+</html>
+

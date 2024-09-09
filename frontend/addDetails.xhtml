@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <style>
+          body {
+                background-image: url("Images/shipp.jpeg");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                overflow:hidden;
+            }
+            header, footer {
+                background-color: #3c4f83;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+                position: fixed;
+                width: 100%;
+                z-index: 1000;
+            }
+            header {
+                top: 0;
+                height: 10%;
+            }
+            footer {
+                float: left;
+                font-size: 15px;
+                line-height: 13px;
+                color: rgba(255, 255, 255, 0.6);
+                width: 100%;
+                padding: 1px 0 2px;
+                background-color: #474a53;
+
+                font-family: Open Sans, Arial;
+                font-weight: 400;
+                font-style: normal;
+                position: fixed;
+                width: 100%;
+                bottom: 0;
+            }
+            nav {
+                position: absolute;
+                top: 0%;
+                width: 100%;
+                background-color: #080732;
+                padding: 10px;
+                text-align: center;
+            }
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                margin: 0 10px;
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: calc(100vh - 120px); 
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            .form-content {
+                width: 100%;
+                max-width: 500px;
+                background-color: #f9f9f9;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                padding: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .row {
+                display: flex;
+                margin-bottom: 10px;
+                align-items: center;
+            }
+            .col-25 {
+                width: 25%;
+                padding-right: 10px;
+                text-align: initial;
+                font-weight: bold;
+            }
+            .col-75 {
+                width: 75%;
+                position: relative; 
+            }
+            .input {
+                width: 100%;
+                padding: 0px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            .submit-button {
+                text-align: center;
+                margin-top: 20px;
+            }
+            .error-message {
+                color: red;
+                font-size: 0.1em;
+                position: absolute;
+                top: 100%;
+                left: 0;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <nav>
+            <b><a href="home1.xhtml">Home</a></b>
+            <b><a href="ShipDetails.xhtml">ShipDetails</a></b>
+            <b><a href="contact.xhtml">Contact us</a></b>
+            <b><a href="loginPage.xhtml">Logout</a></b>
+        </nav>
+        <div class="container">
+            <h:form id="addForm" class="form-content">
+                <h1 align="center">Add Ship Details</h1>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputLabel for="shipId" value="Ship ID: "/>
+                    </div>
+                    <div class="col-75">
+                        <p:inputText id="shipId" converterMessage="Invalid DataType: ID should be Integer" value="#{detailsTableBean.shipId}" required="true" requiredMessage="Ship ID is required" />
+                        <p:message for="shipId" display="shipId" styleClass="error-message"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputLabel for="packageType" value="Package Type: "/>
+                    </div>
+                    <div class="col-75">
+                        <p:selectOneMenu class="input" id="packageType" required="true" requiredMessage="Package Type is required" value="#{detailsTableBean.packageType}" styleClass="input" >
+                                <f:selectItem itemValue="" itemLabel="--Choose the Package Type--" />
+                                <f:selectItem itemValue="Container" itemLabel="Container" />
+                                <f:selectItem itemValue="Crate" itemLabel="Crate" />
+                                <f:selectItem itemValue="Boxes" itemLabel="Boxes" />
+                                <f:selectItem itemValue="Steel Drums" itemLabel="Steel Drums"/>
+                                <f:selectItem itemValue="Wooden Cases" itemLabel="Wooden Cases"/>
+                                <f:ajax render="output" />
+                            </p:selectOneMenu>  
+                        <p:message for="packageType" display="packageType" styleClass="error-message"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputLabel for="numberOfPackage" value="Number of Packages: "/>
+                    </div>
+                    <div class="col-75">
+                        <p:inputText id="numberOfPackage" converterMessage="Invalid DataType: No.of Package should be Integer" value="#{detailsTableBean.numberofPackage}" required="true" requiredMessage="Number of Packages is required" />
+                        <p:message for="numberOfPackage" display="numberOfPackage" styleClass="error-message"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputLabel for="totalWeight" value="Total Weight: "/>
+                    </div>
+                    <div class="col-75">
+                        <p:inputText id="totalWeight" value="#{detailsTableBean.totalWeight}" required="true" requiredMessage="Total Weight is required" />
+                        <p:message for="totalWeight" display="totalWeight" styleClass="error-message"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputLabel for="departureCity" value="Departure City: "/>
+                    </div>
+                    <div class="col-75">
+                        <p:inputText id="departureCity" value="#{detailsTableBean.departureCity}" required="true" requiredMessage="Departure City is required" />
+                        <p:message for="departureCity" display="departureCity" styleClass="error-message"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputLabel for="arrivalCity" value="Arrival City: "/>
+                    </div>
+                    <div class="col-75">
+                        <p:inputText id="arrivalCity" value="#{detailsTableBean.arrivalCity}" required="true" requiredMessage="Arrival City is required" />
+                        <p:message for="arrivalCity" display="arrivalCity" styleClass="error-message"/>
+                    </div>
+                </div>
+                <div class="submit-button">
+                    <h:commandButton id="submit" value="Submit" action="#{detailsTableBean.addDetail()}" />
+                </div>
+            </h:form>
+        </div>
+        <footer>
+            &copy; 2024 My Website. All rights reserved.
+        </footer>
+    </h:body>
+</html>

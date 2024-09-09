@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <style>
+          body {
+                background-image: url("Images/shipp.jpeg");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                overflow:hidden;
+            }
+            header {
+                top: 0;
+                height: 10%;
+            }
+            footer {
+                float: left;
+                font-size: 15px;
+                line-height: 13px;
+                color: rgba(255, 255, 255, 0.6);
+                width: 100%;
+                padding: 1px 0 2px;
+                background-color: #474a53;
+
+                font-family: Open Sans, Arial;
+                font-weight: 400;
+                font-style: normal;
+                position: fixed;
+                width: 100%;
+                bottom: 0;
+            }
+            nav {
+                position: absolute;
+                top: 0%;
+                width: 100%;
+                background-color: #080732;
+                padding: 10px;
+                text-align: center;
+            }
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                margin: 0 10px;
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: calc(100vh - 120px); 
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            .form-content {
+                width: 100%;
+                max-width: 500px;
+                background-color: #f9f9f9;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                padding: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .row {
+                display: flex;
+                margin-bottom: 10px;
+                align-items: center;
+            }
+            .col-25 {
+                width: 25%;
+                padding-right: 10px;
+                text-align: initial;
+                font-weight: bold;
+            }
+            .col-75 {
+                width: 50%;
+            }
+            .input {
+                width: 80%;
+                padding: 0px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            .submit-button {
+                text-align: center;
+                margin-top: 20px;
+            }
+            .error-message {
+                color: red;
+                font-size: 0.1em;
+                position: absolute;
+                top: 100%;
+                left: 0;
+            }
+        </style>
+    </h:head>
+    <h:body>
+            <nav>
+                <b><a href="home1.xhtml">Home</a></b>
+                <b><a href="shipPage.xhtml">Ship</a></b>
+                <b><a href="contact.xhtml">Contact us</a></b>
+                <b><a href="loginPage.xhtml">Logout</a></b>
+            </nav>
+        <div class="container">
+            <h:form id="addForm" class="form-content">
+                <h1 align="center">Add Ship</h1>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputLabel for="ShipId" value="Ship ID: "/>
+                    </div>
+                    <div class="col-75">
+                        <p:inputText id="shipid" converterMessage="Invalid DataType: ID should be Integer" value="#{shipTableBean.shipId}" required="true" requiredMessage="Ship ID is required">
+                            <f:validateRegex pattern="^[0-9]{1}$" />
+                        </p:inputText>
+                        <p:message for="shipid" display="shipid" styleClass="error-message"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputLabel for="DeparturePort" value="Departure Port: "/>
+                    </div>
+                    <div class="col-75">
+                        <p:inputText id="departurePort" value="#{shipTableBean.departurePort}" required="true" requiredMessage="Departure Port is required"/>
+                        <p:message for="departurePort" display="departurePort" styleClass="error-message"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputLabel for="ArrivalPort" value="Arrival Port: "/>
+                    </div>
+                    <div class="col-75">
+                        <p:inputText id="arrivalPort" value="#{shipTableBean.arrivalPort}" required="true" requiredMessage="Arrival Port is required"/>
+                        <p:message for="arrivalPort" display="arrivalPort" styleClass="error-message"/> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputLabel for="DepartureDate" value="Departure Date: "/>
+                    </div>
+                    <div class="col-75">
+                        <p:inputText id="departureDate" value="#{shipTableBean.departureDate}" required="true" requiredMessage="DepartureDate is required"/>
+                        <p:message for="departureDate" display="departureDate" styleClass="error-message"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputLabel for="ArrivalDate" value="Arrival Date: "/>
+                    </div>
+                    <div class="col-75">
+                        <p:inputText id="arrivalDate" value="#{shipTableBean.arrivalDate}" required="true" requiredMessage="ArrivalDate is required"/>
+                        <p:message for="arrivalDate" display="arrivalDate" styleClass="error-message"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputLabel for="status" value="Status: "/>
+                    </div>
+                    <div class="col-75">
+                        <p:selectOneMenu class="input" id="status" required="true" requiredMessage="Status is required" value="#{shipTableBean.status}" styleClass="input" >
+                                <f:selectItem itemValue="" itemLabel="---Choose Status of Ship---" />
+                                <f:selectItem itemValue="Detination Reached" itemLabel="Destination Reached" />
+                                <f:selectItem itemValue="In-Transit" itemLabel="In-Transit" />
+                                <f:selectItem itemValue="Sailing in the Ocean" itemLabel="Sailing in the Ocean" />
+                                <f:selectItem itemValue="Unloading the Packages" itemLabel="Unloading the Packages"/>
+                                <f:selectItem itemValue="Loading the Packages" itemLabel="Loading the Packages"/>
+                                <f:ajax render="output" />
+                            </p:selectOneMenu>  
+                        <p:message for="status" display="status" styleClass="error-message"/>
+                    </div>
+                </div>
+                <div class="submit-button">
+                    <h:commandButton id="submit" value="Submit" action="#{shipTableBean.addShip()}" />
+                </div>
+            </h:form>
+        </div>
+        <footer>
+            &copy; 2024 My Website. All rights reserved.
+        </footer>
+    </h:body>
+</html>

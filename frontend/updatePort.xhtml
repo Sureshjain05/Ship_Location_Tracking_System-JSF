@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head> 
+       <style>
+          body {
+                background-image: url("Images/shipo.jpg");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                overflow:hidden;
+            }
+            header, footer {
+                background-color: #3c4f83;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+                position: fixed;
+                width: 100%;
+                z-index: 1000;
+            }
+            header {
+                top: 0;
+                height: 10%;
+            }
+            footer {
+                float: left;
+                font-size: 15px;
+                line-height: 13px;
+                color: rgba(255, 255, 255, 0.6);
+                width: 100%;
+                padding: 1px 0 2px;
+                background-color: #474a53;
+                font-family: Open Sans, Arial;
+                font-weight: 400;
+                font-style: normal;
+                position: fixed;
+                width: 100%;
+                bottom: 0;
+            }
+            nav {
+                position: absolute;
+                top: 0%;
+                width: 100%;
+                background-color: #080732;
+                padding: 10px;
+                text-align: center;
+            }
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                margin: 0 10px;
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: calc(100vh - 120px);
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            .form-content {
+                width: 100%;
+                max-width: 500px;
+                background-color: #f9f9f9;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                padding: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .row {
+                display: flex;
+                margin-bottom: 10px;
+                align-items: center;
+            }
+            .col-25 {
+                width: 25%;
+                padding-right: 10px;
+                text-align: initial;
+                font-weight: bold;
+            }
+            .col-75 {
+                width: 50%;
+            }
+            .input {
+                width: 80%;
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            .submit-button {
+                text-align: center;
+                margin-top: 20px;
+            }
+            .error-message {
+                color: red;
+                font-size: 0.1em;
+                position: absolute;
+                top: 100%;
+                left: 0;
+            }
+        </style>
+    </h:head>
+    <h:body>
+            <nav>
+                <b><a href="home1.xhtml">Home</a></b>
+                <b><a href="portPage.xhtml">Ports</a></b>
+                <b><a href="contact.xhtml">Contact us</a></b>
+                <b><a href="loginPage.xhtml">Logout</a></b>
+            </nav>
+        <div class="container">
+            <h:form id="addForm" class="form-content">  
+                <h1 align="center">Update Port</h1>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputLabel for="PortId" value="Port ID: "/>
+                    </div>
+                    <div class="col-75">
+                        <p:inputText class="input" disabled="true" id="portId" value="#{portTableBean.portId}"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputLabel for="Name" value="Name: "/>
+                    </div>
+                    <div class="col-75">
+                        <p:inputText class="input" id="name" value="#{portTableBean.name}" required="true" requiredMessage="Name is required"/>
+                        <p:message for="name" display="Name" styleClass="error-message"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputLabel for="City" value="City: "/>
+                    </div>
+                    <div class="col-75">
+                        <p:inputText class="input" id="city" value="#{portTableBean.city}" required="true" requiredMessage="City is required"/>
+                        <p:message for="city" display="City" styleClass="error-message"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputLabel for="PortFunction" value="Port Function: "/>
+                    </div>
+                    <div class="col-75">
+                        <p:inputText class="input" id="portFunction" value="#{portTableBean.portFunction}" required="true" requiredMessage="Port Function is required" />
+                        <p:message for="portFunction" display="PortFunction" styleClass="error-message"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputLabel for="PortSize" value="Port Size: "/>
+                    </div>
+                    <div class="col-75">
+                        <p:inputText class="input" id="portSize" value="#{portTableBean.portSize}" required="true" requiredMessage="Port Size is required" />
+                        <p:message for="portSize" display="PortSize" styleClass="error-message"/>
+                    </div>
+                </div>
+
+                <br/><center><h:commandButton id="submit" value="Update" action="#{portTableBean.updateShip(portTableBean.portId)}"/></center>
+        </h:form>
+        </div> 
+        <footer>   
+            &copy; 2024 My Website. All rights reserved.
+        </footer>
+    </h:body>
+</html>
+    
